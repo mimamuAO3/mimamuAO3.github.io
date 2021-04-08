@@ -1,1 +1,1 @@
-listaus.innerHTML = 'pim';
+document.getElementById("listaus").innerHTML = "pim";
