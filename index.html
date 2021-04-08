@@ -4,15 +4,16 @@
     <head>
         <meta charset="UTF-8">
         <title>mimamun ficcikone</title>
+	<script src="ficcikone.js"></script>
     </head>
 
 <body>
 
 <form>
 fandom
-<select>
+<select onchange="listaus">
 
- <option value="0"></option>
+ <option value="0" selected="selected"></option>
  <option value="1">Harry Potter</option>
  <option value="2">Star Wars</option>
  <option value="3">rare</option>
@@ -21,7 +22,7 @@ fandom
 
 ikäraja
 <select>
- <option value="0"></option>
+ <option value="0" selected="selected"></option>
  <option value="1">S tai K11</option>
  <option value="2">K15</option>
  <option value="3">K18</option>
@@ -31,7 +32,7 @@ ikäraja
 
 pituus
 <select>
- <option value="0"></option>
+ <option value="0" selected="selected"></option>
  <option value="1">raapale</option>
  <option value="2">oneshot</option>
  <option value="3">jatkis</option>
@@ -44,6 +45,8 @@ hahmot
 teemat: karanteeni joulu paritukseton
 
 </form>
+
+<p id="listaus"></p>
 
 </body>
 
