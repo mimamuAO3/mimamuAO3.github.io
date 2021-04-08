@@ -1,1 +1,3 @@
-document.getElementById("listaus").innerHTML = "pim";
+function listaus() {
+	document.getElementById("listaus").innerHTML = "pim";
+}
