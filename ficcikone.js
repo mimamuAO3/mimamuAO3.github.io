@@ -1,3 +1,5 @@
 function listaus() {
-	document.getElementById("listaus").innerHTML = "pim";
+	if (document.getElementById("fandom") == 1) {
+		document.getElementById("listaus").innerHTML = "1";
+	}
 }
