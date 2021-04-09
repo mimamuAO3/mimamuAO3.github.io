@@ -9,6 +9,10 @@
 
 <body>
 
+<img src="ficcikone.png">
+<br />
+<br />
+
 <form>
 fandom
 <select id="fandom" onchange="listaus()">
@@ -33,19 +37,33 @@ ikäraja
 pituus
 <select id="pituus" onchange="listaus()">
  <option value="0" selected="selected"></option>
- <option value="1">raapale</option>
- <option value="2">oneshot</option>
- <option value="3">jatkis</option>
+ <option value="1">alle 1000 sanaa</option>
+ <option value="2">1000-3000 sanaa</option>
+ <option value="3">yli 3000 sanaa</option>
 
 </select>
 
 <br />
 hahmot
 <br />
-teemat: karanteeni joulu paritukseton
+teemat: 
+<input type="checkbox" id="karanteeni" onchange="listaus()">
+karanteeni 
+<input type="checkbox" id="joulu" onchange="listaus()">
+joulu 
+<input type="checkbox" id="paritukseton" onchange="listaus()">
+paritukseton
 
 </form>
 
+<br />
+<br />
+<img src="ficcikone2.png">
+<br />
+<br />
+
+<div id="otsikko"></div>
+<br />
 <div id="listaus"></div>
 
 </body>
