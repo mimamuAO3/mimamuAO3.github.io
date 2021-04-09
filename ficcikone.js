@@ -9,6 +9,6 @@ function listaus() {
 		document.getElementById("listaus").innerHTML = "rare";
 	}
 	else {
-		document.getElementById("listaus").innerHTML = "";
+		document.getElementById("listaus").innerHTML = "x";
 	}
 }
