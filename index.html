@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+
+<!-- Heippa! Tein tämän ficcikoneen harjoitellakseni javascriptiä. Ei kannata lukea tätä lähdekoodia, sillä se on kamalaa. Lue mieluummin ficcejäni :)
+     Bannerin taustakuva on täältä: https://www.deviantart.com/martyna-chan/art/Marukaite-Chikyuu-like-background-566950618 
+	 T: mimamu -->
+
 <html>
 
     <head>
@@ -14,8 +19,8 @@
 <br />
 
 <form>
-fandom
-<select id="fandom" onchange="listaus()">
+fandom:
+<select id="fandom" onchange="hahmot_ja_listaus()">
 
  <option value="0" selected="selected"></option>
  <option value="1">Harry Potter</option>
@@ -24,7 +29,7 @@ fandom
 
 </select>
 
-ikäraja
+ikäraja:
 <select id="ikaraja" onchange="listaus()">
  <option value="0" selected="selected"></option>
  <option value="1">S tai K11</option>
@@ -34,7 +39,7 @@ ikäraja
 </select>
 
 
-pituus
+pituus:
 <select id="pituus" onchange="listaus()">
  <option value="0" selected="selected"></option>
  <option value="1">alle 1000 sanaa</option>
@@ -44,8 +49,8 @@ pituus
 </select>
 
 <br />
-hahmot
-<br />
+<div id="hahmot"> hahmot: <i>hahmohaku toimii vain Potter- ja Star Wars-ficeillä</i></div>
+
 teemat: 
 <input type="checkbox" id="karanteeni" onchange="listaus()">
 karanteeni 
@@ -56,7 +61,6 @@ paritukseton
 
 </form>
 
-<br />
 <br />
 <img src="ficcikone2.png">
 <br />
