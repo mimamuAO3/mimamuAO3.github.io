@@ -21,6 +21,7 @@ function hahmot_ja_listaus() {
 }
 
 function listaus() {
+		
 	if (document.getElementById("fandom").value != 0) {
 		document.getElementById("otsikko").innerHTML = "Ehkä jokin näistä?";
 		document.getElementById("listaus").innerHTML = "";
@@ -60,9 +61,8 @@ function listaus() {
 		document.getElementById("listaus").innerHTML = "";
 
 		// Tähtien sodasta ei ole teemaficcejä
-		if (!HP() && !rare()){
+		if (!(HP() && rare())){
 			yhyy();
-
 		}
 	}
 	// ei mitään valintoja
@@ -111,30 +111,31 @@ function HP() {
 			}
 		}
 	}
-	// K15	
-	if (document.getElementById("ikaraja").value == 2 || (document.getElementById("ikaraja").value == 0) && teema()) {
-		if (teema() && !document.getElementById("joulu").checked) {
-			return false;
-		}		
-		else {	
-			document.getElementById("listaus").innerHTML = ficci("Kaksi valaa", "45965", "K15", "HP", 1100);
-		}
+	// K15 tai pelkkä teema	
+	if (document.getElementById("ikaraja").value == 2 || document.getElementById("joulu").checked) {
+
+		document.getElementById("listaus").innerHTML = ficci("Kaksi valaa", "45965", "K15", "HP", 1100);
+		
 	}
 	// S, K11, ei ikärajaa
 	if (document.getElementById("ikaraja").value == 1 || document.getElementById("ikaraja").value == 0) {
-		if (document.getElementById("pituus").value == 3 || teema()) {
-			if (teema() && !document.getElementById("joulu").checked) {
-				return false;
-			}		
-			else {
-				document.getElementById("listaus").innerHTML += ficci("Annos tekee myrkyn", "48689", "K11", "HP", 14000);
-			}
+		
+		if (document.getElementById("pituus").value == 3 || document.getElementById("joulu").checked) {
+
+			document.getElementById("listaus").innerHTML += ficci("Annos tekee myrkyn", "48689", "K11", "HP", 14000);
+
 		}
-		else if (document.getElementById("pituus").value == 2 && !teema()) {
-			document.getElementById("listaus").innerHTML = ficci("Alfajiri", "43747", "K11", "HP", 1600);
-			document.getElementById("listaus").innerHTML += ficci("Se toinen ministeri", "49387", "K11", "HP", 1600);
-			document.getElementById("listaus").innerHTML += ficci("Kolme kertaa kun Petunia lainasi Vernonin levyjä", "42835", "K11", "HP", 1900);
-			document.getElementById("listaus").innerHTML += ficci("New Yorkin taika", "44000", "S", "HP", 1200);
+		if (document.getElementById("pituus").value == 2 || teema()) {
+
+			if (!teema()) {
+				document.getElementById("listaus").innerHTML = ficci("Alfajiri", "43747", "K11", "HP", 1600);
+				document.getElementById("listaus").innerHTML += ficci("Kolme kertaa kun Petunia lainasi Vernonin levyjä", "42835", "K11", "HP", 1900);
+				document.getElementById("listaus").innerHTML += ficci("New Yorkin taika", "44000", "S", "HP", 1200);
+			}
+			
+			if (document.getElementById("pituus").value == 2 || document.getElementById("karanteeni").checked) {
+				document.getElementById("listaus").innerHTML += ficci("Se toinen ministeri", "49387", "K11", "HP", 1600);
+			}
 		}
 		else if (!teema()){
 			document.getElementById("listaus").innerHTML = ficci("Ota minut Viktoriksi", "50533", "S", "HP", 900);
@@ -146,6 +147,7 @@ function HP() {
 
 // palauttaa true, jos jotain löytyi, muutoin false
 function rare() {
+		
 	// K18
 	if (document.getElementById("ikaraja").value == 3) {
 		if (teema()) {
@@ -195,14 +197,11 @@ function rare() {
 			}
 		}
 		// keskipitkät
-		else if (document.getElementById("pituus").value == 2 || (document.getElementById("pituus").value == 0) && teema()) {
-			if (teema() && !document.getElementById("karanteeni").checked) {
-				return false;
-			}		
-			else {
-				document.getElementById("listaus").innerHTML = ficci("Pohjoismaista yhteistyötä", "49888", "K11", "Hetalia", 1100);
+		else if (document.getElementById("pituus").value == 2 || document.getElementById("karanteeni").checked) {
+
+				document.getElementById("listaus").innerHTML += ficci("Pohjoismaista yhteistyötä", "49888", "K11", "Hetalia", 1100);
 				document.getElementById("listaus").innerHTML += ficci("Maailman onnellisin kansakunta", "50890", "S", "Hetalia", 1100);
-			}
+
 		}
 		// lyhyet, ei valintaa
 		else {
@@ -213,4 +212,5 @@ function rare() {
 		}
 	}
 	return true;
+	alert("d");
 }
