@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- Heippa! Tein tämän ficcikoneen harjoitellakseni javascriptiä. Ei kannata lukea tätä lähdekoodia, sillä se on kamalaa. Lue mieluummin ficcejäni :)
+<!-- Heippa! Tein tämän ficcihaun harjoitellakseni javascriptiä. Ei kannata lukea tätä lähdekoodia, sillä se on kamalaa. Lue mieluummin ficcejäni :)
      Bannerin taustakuva on täältä: https://www.deviantart.com/martyna-chan/art/Marukaite-Chikyuu-like-background-566950618 
 	 T: mimamu -->
 
@@ -8,18 +8,31 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>mimamun ficcikone</title>
-	<script src="ficcikone.js"></script>
+        <title>mimamun ficcimaatti</title>
+	<script src="ficcimaatti.js"></script>
+	
+	<style>
+	
+	body {
+		background-color: #ffffff;
+		font-family: verdana;
+		font-size: 12px;
+	}
+
+	</style>
+
     </head>
 
-<body>
+<body onload="listaus()">
 
-<img src="ficcikone.png">
+<img src="ficcimaatti.png">
 <br />
 <br />
 
-<form>
-fandom:
+<table>
+<tr><td>
+<b>fandom</b>
+<br />
 <select id="fandom" onchange="hahmot_ja_listaus()">
 
  <option value="0" selected="selected"></option>
@@ -28,18 +41,21 @@ fandom:
  <option value="3">rare</option>
 
 </select>
-
-ikäraja:
+</td>
+<td>
+<b>ikäraja</b>
+<br />
 <select id="ikaraja" onchange="listaus()">
- <option value="0" selected="selected"></option>
- <option value="1">S tai K11</option>
+ <option value="1"selected="selected" >S tai K11</option>
  <option value="2">K15</option>
  <option value="3">K18</option>
 
 </select>
 
-
-pituus:
+</td>
+<td>
+<b>pituus</b>
+<br />
 <select id="pituus" onchange="listaus()">
  <option value="0" selected="selected"></option>
  <option value="1">alle 1000 sanaa</option>
@@ -47,22 +63,25 @@ pituus:
  <option value="3">yli 3000 sanaa</option>
 
 </select>
+</td>
+<td>
+<b>teema </b>
+<br />
+<select id="teema" onchange="listaus()">
+ <option value="0" selected="selected"></option>
+ <option value="joulu">joulu</option>
+ <option value="karanteeni">karanteeni</option>
+ <option value="paritukseton">paritukseton</option>
+
+</select>
+</td></tr></table>
+
+<div id="paahenkilohaku">&nbsp;</div>
+
+
 
 <br />
-<div id="hahmot"> hahmot: <i>hahmohaku toimii vain Potter- ja Star Wars-ficeillä</i></div>
-
-teemat: 
-<input type="checkbox" id="karanteeni" onchange="listaus()">
-karanteeni 
-<input type="checkbox" id="joulu" onchange="listaus()">
-joulu 
-<input type="checkbox" id="paritukseton" onchange="listaus()">
-paritukseton
-
-</form>
-
-<br />
-<img src="ficcikone2.png">
+<img src="ficcimaatti2.png">
 <br />
 <br />
 
