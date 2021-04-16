@@ -45,7 +45,7 @@
 <td>
 <b>ikäraja</b>
 <br />
-<select id="ikaraja" onchange="listaus()">
+<select id="ikaraja" onchange="hahmot_ja_listaus()">
  <option value="1" selected="selected">S tai K11</option>
  <option value="2">K15</option>
  <option value="3">K18</option>
@@ -64,19 +64,22 @@
 
 </select>
 </td>
-<td>
+<td><div id="teemahaku">
 <b>teema </b>
 <br />
 <select id="teema" onchange="listaus()">
  <option value="0" selected="selected"></option>
+ <option value="femme">femme</option>
+ <option value="het">het</option>
  <option value="joulu">joulu</option>
  <option value="karanteeni">karanteeni</option>
  <option value="paritukseton">paritukseton</option>
-
+ <option value="slash">slash</option>
 </select>
+</div>
 </td></tr></table>
 
-<div id="paahenkilohaku">&nbsp;</div>
+<div id="paahenkilohaku"></div>
 
 
 
