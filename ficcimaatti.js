@@ -1,37 +1,117 @@
 function hahmot_ja_listaus() {
 	// HP
 	if (document.getElementById("fandom").value == 1) {
-		document.getElementById("paahenkilohaku").innerHTML = "<b>päähenkilo</b><br /> <select id='paahenkilo' onchange='listaus()'>" +
+		
+		if (document.getElementById("ikaraja").value == 1) {
+			document.getElementById("paahenkilohaku").innerHTML = "<b>päähenkilö</b><br /> <select id='paahenkilo' onchange='listaus()'>" +
 		"<option value='0' selected='selected'></option>" +
+		"<option value='anthony'>Anthony Goldstein</option>" +
 		"<option value='aurora'>Aurora Sinistra</option>" +
-		"<option value='boris'>Boris Johnson</option>" +
+		"<option value='boris'>Boris Johnson (RPF)</option>" +
 		"<option value='bunty'>Bunty</option>" +
+		"<option value='draco'>Draco</option>" +
+		"<option value='dumbledore'>Dumbledore</option>" +
+		"<option value='ginny'>Ginny</option>" +
 		"<option value='harry'>Harry</option>" +
 		"<option value='hermione'>Hermione</option>" +
+		"<option value='lily'>Lily Evans</option>" +
+		"<option value='lisko'>Lisko Scamander</option>" +
 		"<option value='molly'>Molly Weasley</option>" +
+		"<option value='oc'>OC</option>" +
+		"<option value='percival'>Percival Vaka</option>" +
 		"<option value='percy'>Percy Weasley</option>" +
-		"<option value='queenie'>Queenie Goldstein</option>" +
 		"<option value='ron'>Ron</option>" +
+		"<option value='rose'>Rose</option>" +
 		"<option value='scorpius'>Scorpius Malfoy</option>" +
 		"<option value='seraphina'>Seraphina Picquery</option>" +
 		"<option value='severus'>Severus</option>" +
+		"<option value='viktor'>Viktor Krum</option>" +
 		"</select>";
+		
+		
+		document.getElementById("teemahaku").innerHTML = "<b>teema</b><br /> <select id='teema' onchange='listaus()'>" +
+		"<option value='0' selected='selected'></option>" +
+		"<option value='femme'>femme</option>" +
+		"<option value='het'>het</option>" +
+		"<option value='joulu'>joulu</option>" +
+		"<option value='karanteeni'>karanteeni</option>" +
+		"<option value='paritukseton'>paritukseton</option>" +
+		"</select>";
+		
+		
+		}
+		else if (document.getElementById("ikaraja").value == 2) {
+	
+			document.getElementById("paahenkilohaku").innerHTML = "<b>päähenkilö</b><br /> <select id='paahenkilo' onchange='listaus()'>" +
+		"<option value='0' selected='selected'></option>" +
+		"<option value='hermione'>Hermione</option>" +
+		"<option value='narcissa'>Narcissa Malfoy</option>" +
+		"<option value='severus'>Severus</option>" +
+		"</select>";
+	
+		document.getElementById("teemahaku").innerHTML = "";
+	
+		}
+		// K18
+		else {
+
+			document.getElementById("paahenkilohaku").innerHTML = "<b>päähenkilö</b><br /> <select id='paahenkilo' onchange='listaus()'>" +
+		"<option value='0' selected='selected'></option>" +
+		"<option value='hermione'>Hermione</option>" +
+		"<option value='queenie'>Queenie Goldstein</option>" +
+		"<option value='severus'>Severus</option>" +
+		"</select>";
+		
+		document.getElementById("teemahaku").innerHTML = "";
+			
+		}
+		
 
 	}
 	// SW
 	else if (document.getElementById("fandom").value == 2) {
-		document.getElementById("paahenkilohaku").innerHTML = "<b>päähenkilo</b><br /> <select id='paahenkilo' onchange='listaus()'>" +
+		
+		if (document.getElementById("ikaraja").value == 1) {
+		document.getElementById("paahenkilohaku").innerHTML = "<b>päähenkilö</b><br /> <select id='paahenkilo' onchange='listaus()'>" +
 		"<option value='0' selected='selected'></option>" +
 		"<option value='dexter'>Dexter Jettster</option>" +
 		"<option value='hux'>Hux</option>" +
 		"<option value='kaydel'>Kaydel Ko Connix</option>" +
+		"<option value='kylo'>Kylo Ren</option>" +
+		"<option value='obiwan'>Obi-Wan</option>" +
 		"<option value='quigon'>Qui-Gon Jinn</option>" +
 		"<option value='rey'>Rey</option>" +
+		"<option value='shmi'>Shmi Skywalker</option>" +
 		"</select>";
 		
+		document.getElementById("teemahaku").innerHTML = "<b>teema</b><br /> <select id='teema' onchange='listaus()'>" +
+		"<option value='0' selected='selected'></option>" +
+		"<option value='het'>het</option>" +
+		"<option value='slash'>slash</option>" +
+		"</select>";
+		}
+		
+		else {
+			document.getElementById("paahenkilohaku").innerHTML = "";
+			document.getElementById("teemahaku").innerHTML = "";
+		}
 	}
+	// rare
 	else {
 		document.getElementById("paahenkilohaku").innerHTML = "";
+		
+		if (document.getElementById("ikaraja").value == 1) {
+				document.getElementById("teemahaku").innerHTML = "<b>teema</b><br /> <select id='teema' onchange='listaus()'>" +
+		"<option value='0' selected='selected'></option>" +
+		"<option value='het'>het</option>" +
+		"<option value='karanteeni'>karanteeni</option>" +
+		"<option value='paritukseton'>paritukseton</option>" +
+		"<option value='slash'>slash</option>" +
+		"</select>";
+		}
+		else {
+			document.getElementById("teemahaku").innerHTML = "";
+		}
 	}
 	listaus();
 }
@@ -65,20 +145,8 @@ function listaus() {
 			}
 		}
 	}
-		
-	// teema
-	else if (document.getElementById("teema").value != 0) {
-
-		// Tähtien sodasta ei ole teemaficcejä
-		var ei_HP = !HP();
-		var ei_rare = !rare();
-		
-		if (ei_HP && ei_rare){
-			yhyy();
-		}
-	}
 	
-	// ei fandomia eikä teemaa
+	// ei fandomia
 	else {
 
 		if (document.getElementById("pituus").value == 0) {
@@ -110,10 +178,14 @@ function SW() {
 	var fandom	= document.getElementById("fandom").value;
 	var ikaraja	= document.getElementById("ikaraja").value;
 	var pituus	= document.getElementById("pituus").value;
-	var teema 	= document.getElementById("teema").value;
+	
+	var teema = 0;
+	if (document.getElementById("teemahaku").innerHTML != "") {
+		teema = document.getElementById("teema").value;
+	}
 	
 	var paahenkilo = 0;
-	if (fandom == 2 && document.getElementById("paahenkilo").value != 0) {
+	if (document.getElementById("paahenkilohaku").innerHTML != "") {
 		paahenkilo = document.getElementById("paahenkilo").value;
 	}
 		
@@ -136,12 +208,11 @@ function SW() {
 	
 	// S, K11
 	else {
-		
-		
+				
 		// pitkät 
 		if (pituus == 3 || pituus == 0) {
 
-			if (paahenkilo == 0 || paahenkilo == "hux" || paahenkilo == "kaydel") {
+			if ((paahenkilo == 0 || paahenkilo == "hux" || paahenkilo == "kaydel") && (teema == 0 || teema == "het")) {
 				ficci("Armitage, kapinallinen", "48892", "K11", "SW", 4500);
 			}			
 
@@ -155,27 +226,31 @@ function SW() {
 		}
 		if (pituus < 2){
 	 
-	
-			if (paahenkilo == 0 || paahenkilo == "quigon") {
-				ficci("Osa maailmankaikkeutta", "46380", "K11", "SW", 700);
+			if (teema == 0 || teema == "het") {
+				if (paahenkilo == 0 || paahenkilo == "quigon" || paahenkilo == "shmi") {
+					ficci("Osa maailmankaikkeutta", "46380", "K11", "SW", 700);
+				}
+				
+				if (paahenkilo == 0 || paahenkilo == "rey" || paahenkilo == "kylo") {
+					ficci("Täydellinen tasapaino", "46120", "K11", "SW", 700);
+				}
+			
+				if (paahenkilo == 0 || paahenkilo == "kaydel") {
+					ficci("Sivuhahmo", "46310", "S", "SW", 700);
+				}	
 			}
 			
-			if (paahenkilo == 0 || paahenkilo == "dexter") {
-				ficci("Yksi joka planeetalla", "46408", "K11", "SW", 700);
+			if (teema == 0 || teema == "slash") {
+				if (paahenkilo == 0 || paahenkilo == "dexter" || paahenkilo == "obiwan") {
+					ficci("Yksi joka planeetalla", "46408", "K11", "SW", 700);
+				}
+
+				if (paahenkilo == 0 || paahenkilo == "hux" || paahenkilo == "kylo") {
+					ficci("Ei kukaan", "46288", "S", "SW", 500);
+					ficci("Häikäilemätön", "46209", "K11", "SW", 300);
+				}
 			}
 
-			if (paahenkilo == 0 || paahenkilo == "hux") {
-				ficci("Ei kukaan", "46288", "S", "SW", 500);
-				ficci("Häikäilemätön", "46209", "K11", "SW", 300);
-			}
-			
-			if (paahenkilo == 0 || paahenkilo == "rey") {
-				ficci("Täydellinen tasapaino", "46120", "K11", "SW", 700);
-			}
-			
-			if (paahenkilo == 0 || paahenkilo == "kaydel") {
-				ficci("Sivuhahmo", "46310", "S", "SW", 700);
-			}
 		}
 
 	}
@@ -188,8 +263,12 @@ function HP() {
 	var fandom	= document.getElementById("fandom").value;
 	var ikaraja	= document.getElementById("ikaraja").value;
 	var pituus	= document.getElementById("pituus").value;
-	var teema 	= document.getElementById("teema").value;
 	
+	var teema = 0;
+	if (document.getElementById("teemahaku").innerHTML != "") {
+		teema = document.getElementById("teema").value;
+	}
+		
 	var paahenkilo = 0;
 	if (fandom == 1 && document.getElementById("paahenkilo").value != 0) {
 		paahenkilo = document.getElementById("paahenkilo").value;
@@ -197,7 +276,7 @@ function HP() {
 	
 	// K18
 	if (ikaraja == 3) {
-		
+	
 		// karsitaan pois mahdottomuudet
 		// tällä ikärajalla ei ole teemaficcejä ja jos hahmo on määritelty, se voi olla vain hermione, severus tai queenie
 		if (teema != 0 || 
@@ -239,13 +318,13 @@ function HP() {
 	}
 	// K15 
 	else if (ikaraja == 2) {
-		if (teema == "karanteeni" || teema == "paritukseton" || pituus == 3 || (paahenkilo != 0 && (paahenkilo != "severus" && paahenkilo != "hermione"))) {
+		if (teema == "karanteeni" || teema == "paritukseton" || pituus == 3 || (paahenkilo != 0 && (paahenkilo != "severus" && paahenkilo != "hermione" && paahenkilo != "narcissa"))) {
 			return false;
 		}
 		
 		// keskipitkät
 		if (pituus == 2 || pituus == 0) {
-			if (paahenkilo == 0 || paahenkilo == "severus") {
+			if (paahenkilo == 0 || paahenkilo == "severus" || paahenkilo == "narcissa") {
 			ficci("Kaksi valaa", "45965", "K15", "HP", 1100);
 			}
 		}
@@ -274,13 +353,16 @@ function HP() {
 		// pitkät 
 		if (pituus == 3 || pituus == 0) {
 
+			if (teema == 0 || teema == "joulu" || teema == "het") {
 
-			if ((teema == 0 || teema == "joulu") && (paahenkilo == 0 || paahenkilo == "scorpius" || paahenkilo == "hermione")) {
-				ficci("Annos tekee myrkyn", "48689", "K11", "HP", 14000);
-			}
+				if (paahenkilo == 0 || paahenkilo == "scorpius" || paahenkilo == "hermione" || paahenkilo == "rose" || paahenkilo == "draco") {
+					ficci("Annos tekee myrkyn", "48689", "K11", "HP", 14000);
+				}
 			
-			if ((teema == 0 || teema == "joulu") && (paahenkilo == 0 || paahenkilo == "hermione")) {
-				ficci("Proxima Centauri", "43861", "K11", "HP", 13000);
+				if (paahenkilo == 0 || paahenkilo == "hermione" || paahenkilo == "anthony") {
+					ficci("Proxima Centauri", "43861", "K11", "HP", 13000);
+				}
+
 			}
 
 			// pituus annettu, tähän voi lopettaa
@@ -294,11 +376,11 @@ function HP() {
 		if (pituus == 2 || pituus == 0) {
 			
 
-			if ((teema == 0 || teema == "karanteeni" || teema == "paritukseton") && (paahenkilo == 0 || paahenkilo == "boris")) {
-				ficci("Se toinen ministeri", "49387", "K11", "HP", 1600);
+			if ((teema == 0 || teema == "karanteeni" || teema == "paritukseton") && (paahenkilo == 0 || paahenkilo == "boris" || paahenkilo == "hermione")) {
+				ficci("Se toinen ministeri", "49387", "K11", "HP x RPF", 1600);
 			}
 			
-			if ((teema == 0 || teema == "paritukseton") && (paahenkilo == 0 || paahenkilo == "severus")) {
+			if ((teema == 0 || teema == "paritukseton") && (paahenkilo == 0 || paahenkilo == "severus" || paahenkilo == "dumbledore")) {
 				ficci("Sianpää", "40982", "S", "HP", 1200);
 			}
 			
@@ -306,27 +388,27 @@ function HP() {
 				return true;
 			} 
 			
-			if (teema == 0) {
 			
-				if (paahenkilo == 0 || paahenkilo == "aurora") {	
+			
+			if ((teema == 0 || teema == "femme") && (paahenkilo == 0 || paahenkilo == "aurora" || paahenkilo == "oc")) {	
 				ficci("Alfajiri", "43747", "K11", "HP", 1600);
+			}
+			
+			if (teema == 0 || teema == "het") {
+			
+				if (paahenkilo == 0 || paahenkilo == "harry" || paahenkilo == "severus" || paahenkilo == "lily") {
+					ficci("Kolme kertaa kun Petunia lainasi Vernonin levyjä", "42835", "K11", "HP", 1900);
 				}
 			
-				if (paahenkilo == 0 || paahenkilo == "harry") {
-				ficci("Kolme kertaa kun Petunia lainasi Vernonin levyjä", "42835", "K11", "HP", 1900);
-				}
-			
-				if (paahenkilo == 0 || paahenkilo == "ron") {
-				ficci("New Yorkin taika", "44000", "S", "HP", 1200);
+				if (paahenkilo == 0 || paahenkilo == "ron" || paahenkilo == "hermione") {
+					ficci("New Yorkin taika", "44000", "S", "HP", 1200);
 				}
 				
 				if (paahenkilo == 0 || paahenkilo == "percy") {
-				ficci("Nimi on vain numero", "42076", "S", "HP", 1200);
+					ficci("Nimi on vain numero", "42076", "S", "HP", 1200);
 				}
-				
-				
-							
-			}
+			}				
+
 
 			if (paahenkilo == "aurora" || paahenkilo == "harry" || paahenkilo == "ron" || paahenkilo == "percy") {
 				return true;
@@ -334,8 +416,8 @@ function HP() {
 
 		}
 		if (pituus < 2){
-	
-			if ((teema != 0 && teema == "paritukseton") || (paahenkilo != 0 && paahenkilo == "molly")) {
+
+			if ((teema == 0 || teema == "paritukseton") && (paahenkilo == 0 || paahenkilo == "molly" || paahenkilo == "ginny")) {
 				ficci("Pardon My French", "43499", "S", "HP", 600);
 			}
 	
@@ -343,18 +425,20 @@ function HP() {
 				return true;
 			} 
 	
-			if (paahenkilo == 0 || paahenkilo == "hermione") {
-				ficci("Ota minut Viktoriksi", "50533", "S", "HP", 900);
-			}
+			if (teema == 0 || teema == "het") {
+	
+				if (paahenkilo == 0 || paahenkilo == "hermione" || paahenkilo == "viktor") {
+					ficci("Ota minut Viktoriksi", "50533", "S", "HP", 900);
+				}
 			
-			if (paahenkilo == 0 || paahenkilo == "bunty") {
-				ficci("Sinipunainen sulka", "47734", "S", "HP", 1000);
-			}
+				if (paahenkilo == 0 || paahenkilo == "bunty" || paahenkilo == "lisko") {
+					ficci("Sinipunainen sulka", "47734", "S", "HP", 1000);
+				}
 
-			if (paahenkilo == 0 || paahenkilo == "seraphina") {
-				ficci("Vakavin kuviteltavissa oleva vaara", "44187", "K11", "HP", 800);
+				if (paahenkilo == 0 || paahenkilo == "seraphina" || paahenkilo == "percival") {
+					ficci("Vakavin kuviteltavissa oleva vaara", "44187", "K11", "HP", 800);
+				}
 			}
-
 		}
 
 	}
@@ -367,7 +451,11 @@ function rare() {
 	var fandom	= document.getElementById("fandom").value;
 	var ikaraja	= document.getElementById("ikaraja").value;
 	var pituus	= document.getElementById("pituus").value;
-	var teema 	= document.getElementById("teema").value;
+	
+	var teema = 0;
+	if (document.getElementById("teemahaku").innerHTML != "") {
+		teema = document.getElementById("teema").value;
+	}
 		
 	// K18
 	if (ikaraja == 3) {
@@ -419,7 +507,7 @@ function rare() {
 				return false;
 			}	
 			
-			if (teema == 0) {
+			if (teema == 0 || teema == "slash") {
 				ficci("Sauna, sisu ja suomettuminen", "49935", "K11", "Hetalia", 3100);
 			}
 		}
@@ -434,7 +522,7 @@ function rare() {
 				ficci("Berliinin ihme", "50890", "S", "Hyviä enteitä (Good Omens)", 1600);
 			}
 			
-			if (teema == 0 || teema == "karanteeni") {
+			if (teema == 0 || teema == "karanteeni" || teema == "slash") {
 				ficci("Maailman onnellisin kansakunta", "50890", "S", "Hetalia", 1100);
 			}
 
@@ -446,19 +534,22 @@ function rare() {
 					return true;
 			}
 			
-			ficci("Kaksi kruunua", "47607", "S", "Dirk Gentlyn holistinen etsivätoimisto", 1100);
+			if (teema == 0 || teema == "slash") {
+				ficci("Kaksi kruunua", "47607", "S", "Dirk Gentlyn holistinen etsivätoimisto", 1100);
+			}
+			
 		}
 		// lyhyet
 		if (pituus < 2) {
 			
-			if (teema != 0) {
-				return false;
-			}	
-			else {
+			if (teema == 0 || teema == "het") {
 				ficci("Niin paljon helpompaa", "47206", "S", "Grantchester", 900);
 				ficci("Ero", "47060", "S", "Tohtori Živago", 800);
 				ficci("Ansionsa mukaan", "46443", "K11", "Stranger Things", 300);
 				ficci("Kieleni lausuu, mitä sydämeni kuiskaa", "41859", "S", "Seitsemän veljestä", 500);
+			}
+			else {
+				return false;
 			}
 		}
 	}
