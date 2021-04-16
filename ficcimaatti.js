@@ -352,6 +352,10 @@ function HP() {
 		
 		// pitkät 
 		if (pituus == 3 || pituus == 0) {
+			
+			if (pituus == 3 && (paahenkilo != 0 && (paahenkilo != "scorpius" || paahenkilo != "hermione" || paahenkilo != "rose" || paahenkilo != "draco" || paahenkilo != "anthony"))) {
+				return false;
+			}
 
 			if (teema == 0 || teema == "joulu" || teema == "het") {
 
@@ -375,7 +379,10 @@ function HP() {
 		// keskipitkät
 		if (pituus == 2 || pituus == 0) {
 			
-
+			if (pituus == 2 && (paahenkilo != 0 && (paahenkilo != "boris" || paahenkilo != "hermione" || paahenkilo != "severus" || paahenkilo != "dumbledore" || paahenkilo != "aurora" || paahenkilo != "oc"))) {
+				return false;
+			}
+			
 			if ((teema == 0 || teema == "karanteeni" || teema == "paritukseton") && (paahenkilo == 0 || paahenkilo == "boris" || paahenkilo == "hermione")) {
 				ficci("Se toinen ministeri", "49387", "K11", "HP x RPF", 1600);
 			}
@@ -416,6 +423,10 @@ function HP() {
 
 		}
 		if (pituus < 2){
+
+			if (pituus == 1 && (paahenkilo != 0 && (paahenkilo != "molly" || paahenkilo != "hermione" || paahenkilo != "ginny" || paahenkilo != "viktor" || paahenkilo != "bunty" || paahenkilo != "lisko"))) {
+				return false;
+			}
 
 			if ((teema == 0 || teema == "paritukseton") && (paahenkilo == 0 || paahenkilo == "molly" || paahenkilo == "ginny")) {
 				ficci("Pardon My French", "43499", "S", "HP", 600);
@@ -503,7 +514,7 @@ function rare() {
 		// pitkät
 		if (pituus == 3 || pituus == 0) {
 			
-			if (pituus == 3 && teema != 0) {
+			if (pituus == 3 && (teema == "karanteeni" || teema == "paritukseton" || teema == "het")) {
 				return false;
 			}	
 			
@@ -514,8 +525,8 @@ function rare() {
 		// keskipitkät
 		if (pituus == 2 || pituus == 0) {
 			
-			if (teema == "joulu") {
-					return false;
+			if (pituus == 2 && (teema == "joulu" || teema == "het")) {
+				return false;
 			}
 
 			if (teema == 0 || teema == "paritukseton") {
@@ -523,6 +534,7 @@ function rare() {
 			}
 			
 			if (teema == 0 || teema == "karanteeni" || teema == "slash") {
+				
 				ficci("Maailman onnellisin kansakunta", "50890", "S", "Hetalia", 1100);
 			}
 
@@ -542,15 +554,17 @@ function rare() {
 		// lyhyet
 		if (pituus < 2) {
 			
+			if (pituus == 1 && (teema == "karanteeni" || teema == "paritukseton" || teema == "slash")) {
+				return false;
+			}
+			
 			if (teema == 0 || teema == "het") {
 				ficci("Niin paljon helpompaa", "47206", "S", "Grantchester", 900);
 				ficci("Ero", "47060", "S", "Tohtori Živago", 800);
 				ficci("Ansionsa mukaan", "46443", "K11", "Stranger Things", 300);
 				ficci("Kieleni lausuu, mitä sydämeni kuiskaa", "41859", "S", "Seitsemän veljestä", 500);
 			}
-			else {
-				return false;
-			}
+
 		}
 	}
 	return true;
