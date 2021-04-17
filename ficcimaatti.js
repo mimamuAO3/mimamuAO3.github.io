@@ -99,7 +99,7 @@ function hahmot_ja_listaus() {
 		}
 	}
 	// rare
-	else {
+	else if (document.getElementById("fandom").value == 3) {
 		document.getElementById("paahenkilohaku").innerHTML = "";
 		
 		if (document.getElementById("ikaraja").value == 1) {
@@ -114,6 +114,20 @@ function hahmot_ja_listaus() {
 		else {
 			document.getElementById("teemahaku").innerHTML = "";
 		}
+	}
+	// ei fandomia
+	else {
+		document.getElementById("paahenkilohaku").innerHTML = "";
+		
+				document.getElementById("teemahaku").innerHTML = "<b>teema</b><br /> <select id='teema' onchange='listaus()'>" +
+		"<option value='0' selected='selected'></option>" +
+		"<option value='femme'>femme</option>" +
+		"<option value='het'>het</option>" +
+		"<option value='joulu'>joulu</option>" +
+		"<option value='karanteeni'>karanteeni</option>" +
+		"<option value='paritukseton'>paritukseton</option>" +
+		"<option value='slash'>slash</option>" +
+		"</select>";
 	}
 	
 	listaus();
@@ -134,10 +148,6 @@ function listaus() {
 		rare();
 	}
 	
-	if (document.getElementById("fandom").value == 0 && document.getElementById("pituus").value == 0) {
-		document.getElementById("otsikko").innerHTML = "Luettavaa löytyi vaikka millä mitalla! Tarkennetaanko hakua?";
-	}
-
 	
 	if (kpl == 0){
 		yhyy();
@@ -145,6 +155,9 @@ function listaus() {
 	else if (kpl == 1) {
 		document.getElementById("otsikko").innerHTML = "Kävisikö tämä?";
 	}
+	else if (kpl > 10) {
+		document.getElementById("otsikko").innerHTML = "Luettavaa löytyi vaikka millä mitalla! Tarkennetaanko hakua?";
+	}	
 		
 	kpl = 0;
 }
@@ -179,7 +192,7 @@ function SW() {
 	// K18
 	if (ikaraja == 3) {
 					
-		if ((pituus == 2 || pituus == 0) && (paahenkilo == 0 || paahenkilo == "hux") && teema == 0){			
+		if ((pituus == 2 || pituus == 0) && (paahenkilo == 0 || paahenkilo == "hux") && (teema == 0) || teema == "slash"){			
 			ficci("Pamarthen viskiä", "46175", "K18", "SW", 2400);
 		}
 		else {
@@ -264,17 +277,11 @@ function HP() {
 	// K18
 	if (ikaraja == 3) {
 	
-		// karsitaan pois mahdottomuudet
-		// tällä ikärajalla ei ole teemaficcejä ja jos hahmo on määritelty, se voi olla vain hermione, severus tai queenie
-		if (teema != 0 || 
-		   (paahenkilo != 0 && (paahenkilo != "hermione" && paahenkilo != "severus" && paahenkilo != "queenie"))) {
-			return false;
-		}	
 		
 		// pitkät
 		if (pituus == 3 || pituus == 0){	
 		
-			if (paahenkilo == 0 || paahenkilo == "hermione" || paahenkilo == "severus") {
+			if ((paahenkilo == 0 || paahenkilo == "hermione" || paahenkilo == "severus") && (teema == 0 || teema == "het")) {
 				ficci("Hermione Granger ja kaksoisolennon arvoitus", "43303", "K18", "HP", 82000);
 			}
 		
@@ -286,7 +293,7 @@ function HP() {
 		}
 		// keskipitkät
 		if (pituus == 2 || pituus == 0){	
-			if (paahenkilo == 0 || paahenkilo == "hermione") {
+			if ((paahenkilo == 0 || paahenkilo == "hermione") && teema == 0) {
 				ficci("Nevillen vetelävalvatti", "40758", "K18", "HP", 2500);
 			}
 			
@@ -298,7 +305,7 @@ function HP() {
 		// lyhyet
 		if (pituus < 2 ){	
 			
-			if (paahenkilo == 0 || paahenkilo == "queenie") {
+			if ((paahenkilo == 0 || paahenkilo == "queenie") && (teema == 0 || teema == "het")) {
 				ficci("Kielletty ovi", "43961", "K18", "HP", 500);
 			}
 		}
