@@ -150,7 +150,8 @@ function listaus() {
 	
 	
 	if (kpl == 0){
-		yhyy();
+		document.getElementById("otsikko").innerHTML = "Yhyy, ei löytynyt mitään!";
+		document.getElementById("listaus").innerHTML = "";
 	}
 	else if (kpl == 1) {
 		document.getElementById("otsikko").innerHTML = "Kävisikö tämä?";
@@ -167,12 +168,6 @@ function ficci(nimi, numero, ikaraja, fandom, sanat) {
 	kpl++;
 }
 
-function yhyy() {
-	document.getElementById("otsikko").innerHTML = "Yhyy, ei löytynyt mitään!";
-	document.getElementById("listaus").innerHTML = "";
-}
-
-// palauttaa true, jos jotain löytyi, muutoin false
 function SW() {
 
 	var fandom	= document.getElementById("fandom").value;
