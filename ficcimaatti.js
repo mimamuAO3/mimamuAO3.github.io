@@ -1,3 +1,5 @@
+var kpl = 0;
+
 function hahmot_ja_listaus() {
 	// HP
 	if (document.getElementById("fandom").value == 1) {
@@ -113,6 +115,7 @@ function hahmot_ja_listaus() {
 			document.getElementById("teemahaku").innerHTML = "";
 		}
 	}
+	
 	listaus();
 }
 
@@ -120,51 +123,35 @@ function listaus() {
 	
 	document.getElementById("otsikko").innerHTML = "Ehkä jokin näistä?";
 	document.getElementById("listaus").innerHTML = "";
-	
-
-	
-	if (document.getElementById("fandom").value != 0) {
 		
-		document.getElementById("otsikko").innerHTML = "Ehkä jokin näistä?";
-		document.getElementById("listaus").innerHTML = "";
-		
-		// fandom
-		if (document.getElementById("fandom").value == 1) {
-			if (!HP()){
-				yhyy();
-			}
-		}
-		else if (document.getElementById("fandom").value == 2 ) {
-			if (!SW()){
-				yhyy();
-			}
-		}
-		else {
-			if (!rare()) {
-				yhyy();
-			}
-		}
+	if (document.getElementById("fandom").value == 0 || document.getElementById("fandom").value == 1) {		
+		HP();		
+	}	
+	if (document.getElementById("fandom").value == 0 || document.getElementById("fandom").value == 2 ) {
+		SW();
+	}		
+	if (document.getElementById("fandom").value == 0 || document.getElementById("fandom").value == 3) {
+		rare();
 	}
 	
-	// ei fandomia
-	else {
-
-		if (document.getElementById("pituus").value == 0) {
-			document.getElementById("otsikko").innerHTML = "Luettavaa löytyi vaikka millä mitalla! Tarkennetaanko hakua?";
-		}
-		
-		var ei_HP = !HP();
-		var ei_SW = !SW();
-		var ei_rare = !rare();
-		
-		if (ei_HP && ei_rare && ei_SW){
-			yhyy();
-		}
+	if (document.getElementById("fandom").value == 0 && document.getElementById("pituus").value == 0) {
+		document.getElementById("otsikko").innerHTML = "Luettavaa löytyi vaikka millä mitalla! Tarkennetaanko hakua?";
 	}
+
+	
+	if (kpl == 0){
+		yhyy();
+	}
+	else if (kpl == 1) {
+		document.getElementById("otsikko").innerHTML = "Kävisikö tämä?";
+	}
+		
+	kpl = 0;
 }
 
 function ficci(nimi, numero, ikaraja, fandom, sanat) {
 	document.getElementById("listaus").innerHTML += "- <a href='https://www.finfanfun.fi/index.php?topic=" + numero + "'>" + nimi + "</a> (" + ikaraja + ") " + fandom + "<br />";
+	kpl++;
 }
 
 function yhyy() {
