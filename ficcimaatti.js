@@ -102,7 +102,7 @@ function hahmot_ja_listaus() {
 	else if (document.getElementById("fandom").value == 3) {
 		document.getElementById("paahenkilohaku").innerHTML = "";
 		
-		if (document.getElementById("ikaraja").value == 1) {
+
 				document.getElementById("teemahaku").innerHTML = "<b>teema</b><br /> <select id='teema' onchange='listaus()'>" +
 		"<option value='0' selected='selected'></option>" +
 		"<option value='het'>het</option>" +
@@ -110,10 +110,7 @@ function hahmot_ja_listaus() {
 		"<option value='paritukseton'>paritukseton</option>" +
 		"<option value='slash'>slash</option>" +
 		"</select>";
-		}
-		else {
-			document.getElementById("teemahaku").innerHTML = "";
-		}
+
 	}
 	// ei fandomia
 	else {
@@ -313,7 +310,7 @@ function HP() {
 		
 		// keskipitkät
 		if (pituus == 2 || pituus == 0) {
-			if (paahenkilo == 0 || paahenkilo == "severus" || paahenkilo == "narcissa") {
+			if ((paahenkilo == 0 || paahenkilo == "severus" || paahenkilo == "narcissa") && (teema == 0 || teema == "het" || teema == "joulu")) {
 			ficci("Kaksi valaa", "45965", "K15", "HP", 1100);
 			}
 		}
@@ -325,8 +322,8 @@ function HP() {
 		// lyhyet
 		if (pituus < 2 ){	
 			
-			if (paahenkilo == 0 || paahenkilo == "hermione") {
-				ficci("Kuusi veljestä", "40604", "K15", "HP", 500);
+			if ((paahenkilo == 0 || paahenkilo == "hermione") && (teema == 0 || teema == "het" || teema == "femme")) {
+				ficci("Kuusi veljestä", "40604", "K15", "HP", 500) ;
 			}
 		}
 		
@@ -459,19 +456,20 @@ function rare() {
 		
 	// K18
 	if (ikaraja == 3) {
+				
 		
-		if (teema != 0) {
-			return false;
-		}		
+		if (teema == 0 || teema == "het") {
 		
-		// pitkät
-		if (pituus == 3 || pituus == 0){	
-			ficci("Utilitaristin unelma", "48039", "K18", "The Good Place", 4600);
+			// pitkät
+			if (pituus == 3 || pituus == 0){	
+				ficci("Utilitaristin unelma", "48039", "K18", "The Good Place", 4600);
+			}
+			// keskipitkät
+			if (pituus == 2 || pituus == 0){	
+				ficci("Himokas ottomaani", "45862", "K18", "Murdochin murhamysteerit", 2600);
+			}
 		}
-		// keskipitkät, ei valintaa
-		if (pituus == 2 || pituus == 0){	
-			ficci("Himokas ottomaani", "45862", "K18", "Murdochin murhamysteerit", 2600);
-		}
+		
 		// lyhyet
 		if (pituus == 1){
 			return false;
@@ -479,19 +477,25 @@ function rare() {
 	}
 	// K15	
 	else if (ikaraja == 2) {
-		
-		if (teema != 0) {
-			return false;
-		}		
+				
 		
 		// pitkät
 		if (pituus == 3 || pituus == 0){	
-			ficci("One to Another", "45522", "K15", "My Mad Fat Diary", 3400);
+		
+			if (teema == 0 || teema == "het") {
+				ficci("One to Another", "45522", "K15", "My Mad Fat Diary", 3400);
+			}
 		}
 		// keskipitkät
 		if (pituus == 2 || pituus == 0){	
-			ficci("Maarianhaminan taistelu", "49985", "K15", "Hetalia", 2200);
-			ficci("Ruudullinen rusetti", "47967", "K15", "The Good Place", 1300);
+		
+			if (teema == 0 || teema == "slash") {
+				ficci("Maarianhaminan taistelu", "49985", "K15", "Hetalia", 2200);
+			}
+			
+			if (teema == 0 || teema == "het") {
+				ficci("Ruudullinen rusetti", "47967", "K15", "The Good Place", 1300);
+			}
 		}
 		// lyhyet
 		if (pituus == 1){
