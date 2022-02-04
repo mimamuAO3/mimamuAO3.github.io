@@ -524,6 +524,7 @@ function rare() {
 
 			if (teema == 0 || teema == "paritukseton") {
 				ficci("Berliinin ihme", "50890", "S", "Hyviä enteitä (Good Omens)", 1600);
+				ficci("Salaperäisen fanifiktion tapaus", "51743", "S", "Bored to Death", 1500);
 			}
 			
 			if (teema == 0 || teema == "karanteeni" || teema == "slash") {
@@ -541,6 +542,8 @@ function rare() {
 			
 			if (teema == 0 || teema == "slash") {
 				ficci("Kaksi kruunua", "47607", "S", "Dirk Gentlyn holistinen etsivätoimisto", 1100);
+				ficci("Kaunotar ja hirviö", "51982", "S", "Ace Attorney", 2300);
+				ficci("Palkkakeskustelu", "51933", "K11", "Ace Attorney", 1200);
 			}
 			
 		}
